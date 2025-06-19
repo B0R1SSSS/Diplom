@@ -23,6 +23,7 @@ namespace DEP
         /// <param name="taskInfo">Information about the task to review</param>
         public DownloadReviewTaskForm(int userId, TaskInfo taskInfo)
         {
+            this.MaximizeBox = false;
             InitializeComponent();
             this.userId = userId;
             this.userRole = "admin";
@@ -152,6 +153,27 @@ namespace DEP
             catch (Exception ex)
             {
                 MessageBox.Show($"Ошибка при отклонении задания: {ex.Message}",
+                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Handles BackToReviewButton click event
+        /// Returns user to the ReviewTaskForm
+        /// Обрабатывает событие нажатия кнопки BackToReviewButton
+        /// Возвращает пользователя на форму проверки работ
+        /// </summary>
+        /// <param name="sender">The event sender</param>
+        /// <param name="e">The event arguments</param>
+        private void BackToReviewButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при возврате к форме проверки: {ex.Message}", 
                     "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

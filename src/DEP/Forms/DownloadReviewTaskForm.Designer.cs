@@ -37,6 +37,7 @@ namespace DEP
             this.rejectButton = new System.Windows.Forms.Button();
             this.commentsTextBox = new System.Windows.Forms.TextBox();
             this.commentsLabel = new System.Windows.Forms.Label();
+            this.BackToReviewButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // taskTitleLabel
@@ -110,11 +111,22 @@ namespace DEP
             this.commentsLabel.TabIndex = 7;
             this.commentsLabel.Text = "Комментарии:";
             // 
+            // BackToReviewButton
+            // 
+            this.BackToReviewButton.Location = new System.Drawing.Point(12, 200);
+            this.BackToReviewButton.Name = "BackToReviewButton";
+            this.BackToReviewButton.Size = new System.Drawing.Size(75, 23);
+            this.BackToReviewButton.TabIndex = 8;
+            this.BackToReviewButton.Text = "← Назад";
+            this.BackToReviewButton.UseVisualStyleBackColor = true;
+            this.BackToReviewButton.Click += new System.EventHandler(this.BackToReviewButton_Click);
+            // 
             // DownloadReviewTaskForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(404, 235);
+            this.Controls.Add(this.BackToReviewButton);
             this.Controls.Add(this.commentsLabel);
             this.Controls.Add(this.commentsTextBox);
             this.Controls.Add(this.rejectButton);
@@ -123,6 +135,7 @@ namespace DEP
             this.Controls.Add(this.filePathTextBox);
             this.Controls.Add(this.submissionInfoLabel);
             this.Controls.Add(this.taskTitleLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DownloadReviewTaskForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -142,5 +155,6 @@ namespace DEP
         private System.Windows.Forms.Button rejectButton;
         private System.Windows.Forms.TextBox commentsTextBox;
         private System.Windows.Forms.Label commentsLabel;
+        private System.Windows.Forms.Button BackToReviewButton;
     }
 }

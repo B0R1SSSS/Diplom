@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
 using DEP.Controls;
+using System.Linq;
 
 namespace DEP
 {
@@ -17,8 +18,12 @@ namespace DEP
 
         public OfflineForm()
         {
+            this.MaximizeBox = false;
             InitializeComponent();
             InitializeOfflineComponents();
+            
+            // Subscribe to form closing event
+            this.FormClosing += OfflineForm_FormClosing;
         }
 
         private void InitializeOfflineComponents()
@@ -41,8 +46,6 @@ namespace DEP
             else
                 _enhancedRichTextBox.Clear();
         }
-
-       
 
         private void OpenFolderButton_Click(object sender, EventArgs e)
         {
@@ -70,6 +73,69 @@ namespace DEP
                               "Ошибка",
                               MessageBoxButtons.OK,
                               MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Handles BackToStartButton click event
+        /// Returns user to the StartingForm
+        /// Обрабатывает событие нажатия кнопки BackToStartButton
+        /// Возвращает пользователя на форму входа
+        /// </summary>
+        /// <param name="sender">The event sender</param>
+        /// <param name="e">The event arguments</param>
+        private void BackToStartButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Find existing StartingForm or create new one
+                var startingForm = Application.OpenForms.OfType<StartingForm>().FirstOrDefault();
+                if (startingForm == null)
+                {
+                    startingForm = new StartingForm();
+                    startingForm.Show();
+                }
+                else
+                {
+                    startingForm.Show();
+                    startingForm.BringToFront();
+                }
+                
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при возврате к форме входа: {ex.Message}", 
+                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Handles form closing event
+        /// Returns user to the StartingForm when form is closed
+        /// </summary>
+        /// <param name="sender">The event sender</param>
+        /// <param name="e">The event arguments</param>
+        private void OfflineForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                // Find existing StartingForm or create new one
+                var startingForm = Application.OpenForms.OfType<StartingForm>().FirstOrDefault();
+                if (startingForm == null)
+                {
+                    startingForm = new StartingForm();
+                    startingForm.Show();
+                }
+                else
+                {
+                    startingForm.Show();
+                    startingForm.BringToFront();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка при возврате к форме входа: {ex.Message}");
             }
         }
     }

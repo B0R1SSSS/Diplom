@@ -16,362 +16,375 @@ using SharpCompress.Common;
 
 namespace DEP
 {
+    /// <summary>
+    /// Form for adding information to the database
+    /// Форма для добавления информации в базу данных
+    /// </summary>
     public partial class AddInfo : Form
     {
-        private DatabaseManager dbManager;
-        private string tempDirectory;
-        private int userId;
-        private Panel mainPanel;
+        private readonly DatabaseManager _dbManager;
+        private readonly string _tempDirectory;
+        private readonly int _userId;
 
+        /// <summary>
+        /// Event that is raised when a user is successfully deleted
+        /// Used to notify other forms that the data has changed and needs to be refreshed
+        /// Событие, которое возникает при успешном удалении пользователя
+        /// Используется для уведомления других форм о том, что данные изменились и требуют обновления
+        /// </summary>
+        public event EventHandler UserDeleted;
+
+        /// <summary>
+        /// Event that is raised when a task is successfully added
+        /// Used to notify other forms that the data has changed and needs to be refreshed
+        /// Событие, которое возникает при успешном добавлении задания
+        /// Используется для уведомления других форм о том, что данные изменились и требуют обновления
+        /// </summary>
+        public event EventHandler TaskAdded;
+
+        /// <summary>
+        /// Event that is raised when a study material is successfully added
+        /// Used to notify other forms that the data has changed and needs to be refreshed
+        /// Событие, которое возникает при успешном добавлении материала
+        /// Используется для уведомления других форм о том, что данные изменились и требуют обновления
+        /// </summary>
+        public event EventHandler MaterialAdded;
+
+        /// <summary>
+        /// Event that is raised when a user is successfully added
+        /// Used to notify other forms that the data has changed and needs to be refreshed
+        /// Событие, которое возникает при успешном добавлении пользователя
+        /// Используется для уведомления других форм о том, что данные изменились и требуют обновления
+        /// </summary>
+        public event EventHandler UserAdded;
+
+        /// <summary>
+        /// Initializes a new instance of the AddInfo form
+        /// </summary>
+        /// <param name="userId">The ID of the current user</param>
         public AddInfo(int userId)
         {
+            this.MaximizeBox = false;
             InitializeComponent();
-            this.userId = userId;
-
-            // Настройка формы
-            this.MinimumSize = new Size(601, 900);
-            this.MaximumSize = new Size(601, 900);
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
-            this.StartPosition = FormStartPosition.CenterScreen;
-            this.Text = "Добавление информации";
-
-            // Создаем временную директорию для файлов
-            tempDirectory = Path.Combine(Path.GetTempPath(), "DEP_Temp");
-            Directory.CreateDirectory(tempDirectory);
-
-            // Создаем панель для скролла
-            mainPanel = new Panel
-            {
-                Dock = DockStyle.Fill,
-                AutoScroll = true
-            };
-
-            dbManager = DatabaseManager.Instance;
-            InitializeComponents();
-
-            // Добавляем панель на форму
-            this.Controls.Add(mainPanel);
+            _userId = userId;
+            _dbManager = DatabaseManager.Instance;
+            
+            // Create temporary directory for files
+            _tempDirectory = Path.Combine(Path.GetTempPath(), "DEP_Temp");
+            Directory.CreateDirectory(_tempDirectory);
         }
 
-        private void InitializeComponents()
+        /// <summary>
+        /// Handles form load event
+        /// </summary>
+        /// <param name="sender">The event sender</param>
+        /// <param name="e">The event arguments</param>
+        private void AddInfo_Load(object sender, EventArgs e)
         {
-            // Группа для добавления методических материалов
-            GroupBox materialsGroup = new GroupBox
+            try
             {
-                Text = "Добавление методических материалов",
-                Location = new Point(12, 12),
-                Size = new Size(560, 300)
-            };
-
-            PlaceholderTextBox materialTitleBox = new PlaceholderTextBox
+                LoadTasks();
+            }
+            catch (Exception ex)
             {
-                Location = new Point(10, 30),
-                Size = new Size(300, 20),
-                PlaceholderText = "Название материала"
-            };
-
-            PlaceholderTextBox materialDescriptionBox = new PlaceholderTextBox
-            {
-                Location = new Point(10, 70),
-                Size = new Size(300, 60),
-                Multiline = true,
-                PlaceholderText = "Описание материала"
-            };
-
-            ComboBox taskComboBox = new ComboBox
-            {
-                Location = new Point(10, 140),
-                Size = new Size(300, 20),
-                DropDownStyle = ComboBoxStyle.DropDownList
-            };
-
-            Button selectMaterialButton = new Button
-            {
-                Text = "Выбрать файл",
-                Location = new Point(10, 180),
-                Size = new Size(120, 25)
-            };
-
-            Label selectedFileLabel = new Label
-            {
-                Location = new Point(140, 185),
-                Size = new Size(300, 20),
-                Text = "Файл не выбран"
-            };
-
-            Button addMaterialButton = new Button
-            {
-                Text = "Добавить материал",
-                Location = new Point(10, 220),
-                Size = new Size(200, 25)
-            };
-
-            materialsGroup.Controls.AddRange(new Control[] { 
-                materialTitleBox, 
-                materialDescriptionBox,
-                taskComboBox,
-                selectMaterialButton, 
-                selectedFileLabel, 
-                addMaterialButton 
-            });
-
-            // Группа для добавления пользователей
-            GroupBox usersGroup = new GroupBox
-            {
-                Text = "Добавление пользователей",
-                Location = new Point(12, 330),
-                Size = new Size(560, 250)
-            };
-
-            PlaceholderTextBox usernameBox = new PlaceholderTextBox
-            {
-                Location = new Point(10, 30),
-                Size = new Size(300, 20),
-                PlaceholderText = "Имя пользователя"
-            };
-
-            PlaceholderTextBox fullNameBox = new PlaceholderTextBox
-            {
-                Location = new Point(10, 70),
-                Size = new Size(300, 20),
-                PlaceholderText = "Полное имя"
-            };
-
-            PlaceholderTextBox passwordBox = new PlaceholderTextBox
-            {
-                Location = new Point(10, 110),
-                Size = new Size(300, 20),
-                PlaceholderText = "Пароль",
-                UseSystemPasswordChar = true
-            };
-
-            ComboBox roleComboBox = new ComboBox
-            {
-                Location = new Point(10, 150),
-                Size = new Size(300, 20),
-                DropDownStyle = ComboBoxStyle.DropDownList
-            };
-            roleComboBox.Items.AddRange(new string[] { "Teacher", "Student" });
-
-            Button addUserButton = new Button
-            {
-                Text = "Добавить пользователя",
-                Location = new Point(10, 190),
-                Size = new Size(200, 25)
-            };
-
-            usersGroup.Controls.AddRange(new Control[] { 
-                usernameBox, 
-                fullNameBox,
-                passwordBox, 
-                roleComboBox, 
-                addUserButton 
-            });
-
-            // Группа для добавления заданий
-            GroupBox tasksGroup = new GroupBox
-            {
-                Text = "Добавление заданий",
-                Location = new Point(12, 600),
-                Size = new Size(560, 250)
-            };
-
-            PlaceholderTextBox taskNameBox = new PlaceholderTextBox
-            {
-                Location = new Point(10, 30),
-                Size = new Size(300, 20),
-                PlaceholderText = "Название задания"
-            };
-
-            PlaceholderTextBox taskDescriptionBox = new PlaceholderTextBox
-            {
-                Location = new Point(10, 70),
-                Size = new Size(300, 60),
-                Multiline = true,
-                PlaceholderText = "Описание задания"
-            };
-
-            Button addTaskButton = new Button
-            {
-                Text = "Добавить задание",
-                Location = new Point(10, 150),
-                Size = new Size(200, 25)
-            };
-
-            tasksGroup.Controls.AddRange(new Control[] { taskNameBox, taskDescriptionBox, addTaskButton });
-
-            // Добавляем все группы на панель
-            mainPanel.Controls.AddRange(new Control[] { materialsGroup, usersGroup, tasksGroup });
-
-            // Обработчики событий
-            selectMaterialButton.Click += (s, e) =>
-            {
-                using (OpenFileDialog openFileDialog = new OpenFileDialog())
-                {
-                    openFileDialog.Filter = "Все файлы|*.*";
-                    openFileDialog.Title = "Выберите файл методического материала";
-
-                    if (openFileDialog.ShowDialog() == DialogResult.OK)
-                    {
-                        try
-                        {
-                            string tempPath = Path.Combine(tempDirectory, Path.GetFileName(openFileDialog.FileName));
-                            File.Copy(openFileDialog.FileName, tempPath, true);
-                            materialTitleBox.Tag = tempPath;
-                            selectedFileLabel.Text = Path.GetFileName(openFileDialog.FileName);
-                            MessageBox.Show("Файл успешно выбран", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show($"Ошибка при копировании файла: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                }
-            };
-
-            addMaterialButton.Click += (s, e) =>
-            {
-                if (string.IsNullOrWhiteSpace(materialTitleBox.Text) || materialTitleBox.Text == materialTitleBox.PlaceholderText)
-                {
-                    MessageBox.Show("Введите название материала", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                if (taskComboBox.SelectedItem == null)
-                {
-                    MessageBox.Show("Выберите задание", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                if (materialTitleBox.Tag == null)
-                {
-                    MessageBox.Show("Выберите файл", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                try
-                {
-                    string filePath = materialTitleBox.Tag.ToString();
-                    var selectedTask = (TaskAdd)taskComboBox.SelectedItem;
-                    if (dbManager.AddStudyMaterial(
-                        materialTitleBox.Text,
-                        materialDescriptionBox.Text,
-                        filePath,
-                        userId,
-                        selectedTask.TaskId))
-                    {
-                        MessageBox.Show("Материал успешно добавлен", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        materialTitleBox.Clear();
-                        materialDescriptionBox.Clear();
-                        materialTitleBox.Tag = null;
-                        selectedFileLabel.Text = "Файл не выбран";
-                        taskComboBox.SelectedIndex = -1;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Ошибка при добавлении материала: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            };
-
-            addUserButton.Click += (s, e) =>
-            {
-                if (string.IsNullOrWhiteSpace(usernameBox.Text) || usernameBox.Text == usernameBox.PlaceholderText)
-                {
-                    MessageBox.Show("Введите имя пользователя", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                if (string.IsNullOrWhiteSpace(fullNameBox.Text) || fullNameBox.Text == fullNameBox.PlaceholderText)
-                {
-                    MessageBox.Show("Введите полное имя", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                if (string.IsNullOrWhiteSpace(passwordBox.Text) || passwordBox.Text == passwordBox.PlaceholderText)
-                {
-                    MessageBox.Show("Введите пароль", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                if (roleComboBox.SelectedItem == null)
-                {
-                    MessageBox.Show("Выберите роль", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                try
-                {
-                    if (dbManager.AddUser(usernameBox.Text, passwordBox.Text, fullNameBox.Text, roleComboBox.SelectedItem.ToString()))
-                    {
-                        MessageBox.Show("Пользователь успешно добавлен", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        usernameBox.Clear();
-                        fullNameBox.Clear();
-                        passwordBox.Clear();
-                        roleComboBox.SelectedIndex = -1;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Ошибка при добавлении пользователя: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            };
-
-            addTaskButton.Click += (s, e) =>
-            {
-                if (string.IsNullOrWhiteSpace(taskNameBox.Text) || taskNameBox.Text == taskNameBox.PlaceholderText ||
-                    string.IsNullOrWhiteSpace(taskDescriptionBox.Text) || taskDescriptionBox.Text == taskDescriptionBox.PlaceholderText)
-                {
-                    MessageBox.Show("Заполните все поля", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                try
-                {
-                    if (dbManager.AddTask(taskNameBox.Text, taskDescriptionBox.Text, userId))
-                    {
-                        MessageBox.Show("Задание успешно добавлено", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        taskNameBox.Clear();
-                        taskDescriptionBox.Clear();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Ошибка при добавлении задания: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            };
-
-            // Загрузка списка заданий при открытии формы
-            this.Load += (s, e) =>
-            {
-                try
-                {
-                    var tasks = dbManager.GetAllTasks();
-                    taskComboBox.DisplayMember = "Title";
-                    taskComboBox.ValueMember = "TaskId";
-                    taskComboBox.DataSource = tasks;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Ошибка при загрузке списка заданий: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            };
+                MessageBox.Show($"Ошибка при загрузке списка заданий: {ex.Message}", 
+                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
+        /// <summary>
+        /// Loads the list of tasks into the ComboBox
+        /// </summary>
+        private void LoadTasks()
+        {
+            var tasks = _dbManager.GetAllTasks();
+            TaskComboBox.DisplayMember = "Title";
+            TaskComboBox.ValueMember = "TaskId";
+            TaskComboBox.DataSource = tasks;
+        }
+
+        /// <summary>
+        /// Handles SelectMaterialButton click event
+        /// </summary>
+        /// <param name="sender">The event sender</param>
+        /// <param name="e">The event arguments</param>
+        private void SelectMaterialButton_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Все файлы|*.*";
+                openFileDialog.Title = "Выберите файл методического материала";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        string tempPath = Path.Combine(_tempDirectory, Path.GetFileName(openFileDialog.FileName));
+                        File.Copy(openFileDialog.FileName, tempPath, true);
+                        MaterialTitleBox.Tag = tempPath;
+                        SelectedFileLabel.Text = Path.GetFileName(openFileDialog.FileName);
+                        MessageBox.Show("Файл успешно выбран", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Ошибка при копировании файла: {ex.Message}", 
+                            "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Handles AddMaterialButton click event
+        /// </summary>
+        /// <param name="sender">The event sender</param>
+        /// <param name="e">The event arguments</param>
+        private void AddMaterialButton_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(MaterialTitleBox.Text) || MaterialTitleBox.Text == MaterialTitleBox.PlaceholderText)
+            {
+                MessageBox.Show("Введите название материала", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (TaskComboBox.SelectedItem == null)
+            {
+                MessageBox.Show("Выберите задание", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (MaterialTitleBox.Tag == null)
+            {
+                MessageBox.Show("Выберите файл", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                string filePath = MaterialTitleBox.Tag.ToString();
+                var selectedTask = (TaskAdd)TaskComboBox.SelectedItem;
+                if (_dbManager.AddStudyMaterial(
+                    MaterialTitleBox.Text,
+                    MaterialDescriptionBox.Text,
+                    filePath,
+                    _userId,
+                    selectedTask.TaskId))
+                {
+                    MessageBox.Show("Материал успешно добавлен", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ClearMaterialFields();
+                    MaterialAdded?.Invoke(this, EventArgs.Empty);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при добавлении материала: {ex.Message}", 
+                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Clears all material input fields
+        /// </summary>
+        private void ClearMaterialFields()
+        {
+            MaterialTitleBox.Clear();
+            MaterialDescriptionBox.Clear();
+            MaterialTitleBox.Tag = null;
+            SelectedFileLabel.Text = "Файл не выбран";
+            TaskComboBox.SelectedIndex = -1;
+        }
+
+        /// <summary>
+        /// Handles AddUserButton click event
+        /// </summary>
+        /// <param name="sender">The event sender</param>
+        /// <param name="e">The event arguments</param>
+        private void AddUserButton_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(UsernameBox.Text) || UsernameBox.Text == UsernameBox.PlaceholderText)
+            {
+                MessageBox.Show("Введите имя пользователя", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(FullNameBox.Text) || FullNameBox.Text == FullNameBox.PlaceholderText)
+            {
+                MessageBox.Show("Введите полное имя", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(PasswordBox.Text) || PasswordBox.Text == PasswordBox.PlaceholderText)
+            {
+                MessageBox.Show("Введите пароль", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (RoleComboBox.SelectedItem == null)
+            {
+                MessageBox.Show("Выберите роль", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                if (_dbManager.AddUser(UsernameBox.Text, PasswordBox.Text, FullNameBox.Text, RoleComboBox.SelectedItem.ToString()))
+                {
+                    MessageBox.Show("Пользователь успешно добавлен", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ClearUserFields();
+                    UserAdded?.Invoke(this, EventArgs.Empty);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при добавлении пользователя: {ex.Message}", 
+                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Handles DeleteUserButton click event
+        /// </summary>
+        /// <param name="sender">The event sender</param>
+        /// <param name="e">The event arguments</param>
+        private void DeleteUserButton_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(UsernameToDeleteBox.Text) || UsernameToDeleteBox.Text == UsernameToDeleteBox.PlaceholderText)
+            {
+                MessageBox.Show("Введите логин пользователя для удаления", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                string username = UsernameToDeleteBox.Text;
+                
+                // Show confirmation dialog
+                var result = MessageBox.Show(
+                    $"Вы уверены, что хотите удалить пользователя '{username}'?\n\n" +
+                    "Это действие удалит:\n" +
+                    "- Все задания, созданные пользователем\n" +
+                    "- Все работы, отправленные пользователем\n" +
+                    "- Все работы, проверенные пользователем\n" +
+                    "- Все материалы, загруженные пользователем\n\n" +
+                    "Это действие нельзя отменить!",
+                    "Подтверждение удаления",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
+                
+                if (result == DialogResult.Yes)
+                {
+                    if (_dbManager.DeleteUser(username))
+                    {
+                        MessageBox.Show("Пользователь и все связанные данные успешно удалены", 
+                            "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        UsernameToDeleteBox.Clear();
+                        UserDeleted?.Invoke(this, EventArgs.Empty);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Пользователь с таким логином не найден", 
+                            "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при удалении пользователя: {ex.Message}", 
+                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Clears all user input fields
+        /// </summary>
+        private void ClearUserFields()
+        {
+            UsernameBox.Clear();
+            FullNameBox.Clear();
+            PasswordBox.Clear();
+            RoleComboBox.SelectedIndex = -1;
+        }
+
+        /// <summary>
+        /// Handles AddTaskButton click event
+        /// </summary>
+        /// <param name="sender">The event sender</param>
+        /// <param name="e">The event arguments</param>
+        private void AddTaskButton_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TaskNameBox.Text) || TaskNameBox.Text == TaskNameBox.PlaceholderText ||
+                string.IsNullOrWhiteSpace(TaskDescriptionBox.Text) || TaskDescriptionBox.Text == TaskDescriptionBox.PlaceholderText)
+            {
+                MessageBox.Show("Заполните все поля", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                if (_dbManager.AddTask(TaskNameBox.Text, TaskDescriptionBox.Text, _userId))
+                {
+                    MessageBox.Show("Задание успешно добавлено", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ClearTaskFields();
+                    LoadTasks(); // Reload tasks list
+                    TaskAdded?.Invoke(this, EventArgs.Empty);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при добавлении задания: {ex.Message}", 
+                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Clears all task input fields
+        /// </summary>
+        private void ClearTaskFields()
+        {
+            TaskNameBox.Clear();
+            TaskDescriptionBox.Clear();
+        }
+
+        /// <summary>
+        /// Handles form closing event
+        /// </summary>
+        /// <param name="e">The form closing event arguments</param>
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
-            // Удаляем временную директорию при закрытии формы
-            if (Directory.Exists(tempDirectory))
+            // Remove temporary directory when closing the form
+            if (Directory.Exists(_tempDirectory))
             {
                 try
                 {
-                    Directory.Delete(tempDirectory, true);
+                    Directory.Delete(_tempDirectory, true);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Ошибка при удалении временных файлов: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Ошибка при удалении временных файлов: {ex.Message}", 
+                        "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        /// <summary>
+        /// Handles BackToReviewButton click event
+        /// Returns user to the ReviewTaskForm
+        /// Обрабатывает событие нажатия кнопки BackToReviewButton
+        /// Возвращает пользователя на форму проверки работ
+        /// </summary>
+        /// <param name="sender">The event sender</param>
+        /// <param name="e">The event arguments</param>
+        private void BackToReviewButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при возврате к форме подготовки: {ex.Message}",
+                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

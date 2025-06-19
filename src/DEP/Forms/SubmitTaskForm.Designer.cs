@@ -33,8 +33,8 @@ namespace DEP.Forms
             this.filePathTextBox = new System.Windows.Forms.TextBox();
             this.browseButton = new System.Windows.Forms.Button();
             this.submitButton = new System.Windows.Forms.Button();
-            this.cancelButton = new System.Windows.Forms.Button();
             this.fileTypeLabel = new System.Windows.Forms.Label();
+            this.BackToPrepareButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // taskTitleLabel
@@ -75,16 +75,6 @@ namespace DEP.Forms
             this.submitButton.UseVisualStyleBackColor = true;
             this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
-            // cancelButton
-            // 
-            this.cancelButton.Location = new System.Drawing.Point(12, 120);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 4;
-            this.cancelButton.Text = "Отмена";
-            this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
-            // 
             // fileTypeLabel
             // 
             this.fileTypeLabel.AutoSize = true;
@@ -94,17 +84,28 @@ namespace DEP.Forms
             this.fileTypeLabel.TabIndex = 6;
             this.fileTypeLabel.Text = "Выберите файл:";
             // 
+            // BackToPrepareButton
+            // 
+            this.BackToPrepareButton.Location = new System.Drawing.Point(16, 120);
+            this.BackToPrepareButton.Name = "BackToPrepareButton";
+            this.BackToPrepareButton.Size = new System.Drawing.Size(75, 23);
+            this.BackToPrepareButton.TabIndex = 7;
+            this.BackToPrepareButton.Text = "← Назад";
+            this.BackToPrepareButton.UseVisualStyleBackColor = true;
+            this.BackToPrepareButton.Click += new System.EventHandler(this.BackToPrepareButton_Click);
+            // 
             // SubmitTaskForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(404, 155);
+            this.Controls.Add(this.BackToPrepareButton);
             this.Controls.Add(this.fileTypeLabel);
-            this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.browseButton);
             this.Controls.Add(this.filePathTextBox);
             this.Controls.Add(this.taskTitleLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SubmitTaskForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -120,7 +121,7 @@ namespace DEP.Forms
         private System.Windows.Forms.TextBox filePathTextBox;
         private System.Windows.Forms.Button browseButton;
         private System.Windows.Forms.Button submitButton;
-        private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Label fileTypeLabel;
+        private System.Windows.Forms.Button BackToPrepareButton;
     }
 }

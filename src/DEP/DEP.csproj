@@ -156,6 +156,12 @@
     <Compile Include="Forms\StartingForm.Designer.cs">
       <DependentUpon>StartingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SubmissionStatusForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SubmissionStatusForm.Designer.cs">
+      <DependentUpon>SubmissionStatusForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\SubmitTaskForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,6 +192,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\StartingForm.resx">
       <DependentUpon>StartingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SubmissionStatusForm.resx">
+      <DependentUpon>SubmissionStatusForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SubmitTaskForm.resx">
       <DependentUpon>SubmitTaskForm.cs</DependentUpon>

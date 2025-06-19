@@ -19,6 +19,7 @@ namespace DEP
         /// </summary>
         public StartingForm()
         {
+            this.MaximizeBox = false;
             InitializeComponent();
             InitializeForm();
             InitializeLogo();

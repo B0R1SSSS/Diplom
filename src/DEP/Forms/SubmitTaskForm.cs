@@ -24,6 +24,7 @@ namespace DEP.Forms
         /// <param name="taskTitle">The title of the task being submitted</param>
         public SubmitTaskForm(int userId, int taskId, string taskTitle)
         {
+            this.MaximizeBox = false;
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             this.userId = userId;
@@ -171,10 +172,18 @@ namespace DEP.Forms
             }
         }
 
+      
+        
+
         /// <summary>
-        /// Handles the cancel button click event
+        /// Handles BackToPrepareButton click event
+        /// Returns user to the PrepareModForm
+        /// Обрабатывает событие нажатия кнопки BackToPrepareButton
+        /// Возвращает пользователя на форму подготовки
         /// </summary>
-        private void cancelButton_Click(object sender, EventArgs e)
+        /// <param name="sender">The event sender</param>
+        /// <param name="e">The event arguments</param>
+        private void BackToPrepareButton_Click(object sender, EventArgs e)
         {
             try
             {
@@ -182,7 +191,7 @@ namespace DEP.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка при закрытии формы: {ex.Message}", 
+                MessageBox.Show($"Ошибка при возврате к форме подготовки: {ex.Message}", 
                     "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

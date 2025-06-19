@@ -39,6 +39,7 @@
             this.TaskIdTextBox = new System.Windows.Forms.TextBox();
             this.ChangeModeButton = new System.Windows.Forms.Button();
             this.SortButton = new System.Windows.Forms.Button();
+            this.BackToStartButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.SubmissionGridView)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -105,7 +106,7 @@
             this.SubmissionGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.SubmissionGridView.Location = new System.Drawing.Point(3, 3);
             this.SubmissionGridView.Name = "SubmissionGridView";
-            this.SubmissionGridView.Size = new System.Drawing.Size(1288, 716);
+            this.SubmissionGridView.Size = new System.Drawing.Size(1288, 669);
             this.SubmissionGridView.TabIndex = 11;
             // 
             // panel1
@@ -113,7 +114,7 @@
             this.panel1.Controls.Add(this.SubmissionGridView);
             this.panel1.Location = new System.Drawing.Point(12, 147);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1294, 720);
+            this.panel1.Size = new System.Drawing.Size(1294, 675);
             this.panel1.TabIndex = 12;
             // 
             // TaskIdTextBox
@@ -151,12 +152,25 @@
             this.SortButton.UseVisualStyleBackColor = true;
             this.SortButton.Click += new System.EventHandler(this.SortButton_Click);
             // 
+            // BackToStartButton
+            // 
+            this.BackToStartButton.BackColor = System.Drawing.SystemColors.Control;
+            this.BackToStartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.BackToStartButton.Location = new System.Drawing.Point(12, 828);
+            this.BackToStartButton.Name = "BackToStartButton";
+            this.BackToStartButton.Size = new System.Drawing.Size(247, 39);
+            this.BackToStartButton.TabIndex = 16;
+            this.BackToStartButton.Text = "← Назад к входу";
+            this.BackToStartButton.UseVisualStyleBackColor = true;
+            this.BackToStartButton.Click += new System.EventHandler(this.BackToStartButton_Click);
+            // 
             // ReviewTaskForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1318, 879);
+            this.Controls.Add(this.BackToStartButton);
             this.Controls.Add(this.SortButton);
             this.Controls.Add(this.TaskIdTextBox);
             this.Controls.Add(this.ChangeModeButton);
@@ -166,6 +180,7 @@
             this.Controls.Add(this.DownloadTaskButton);
             this.Controls.Add(this.ReviewButton);
             this.Controls.Add(this.UpdateDBInfoButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ReviewTaskForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -188,5 +203,6 @@
         private System.Windows.Forms.TextBox TaskIdTextBox;
         private System.Windows.Forms.Button ChangeModeButton;
         private System.Windows.Forms.Button SortButton;
+        private System.Windows.Forms.Button BackToStartButton;
     }
 }

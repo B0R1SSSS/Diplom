@@ -44,6 +44,7 @@ namespace DEP
 
         public PrepareModForm(string userRole,int userid)
         {
+            this.MaximizeBox = false;
             this.userRole = userRole;
             this.userId = userid;
             InitializeComponent();
@@ -66,14 +67,14 @@ namespace DEP
             }
 
             // Привязываем обработчики событий
-            
-            
+            this.FormClosing += PrepareModForm_FormClosing;
 
             InitializeComponents();
         }
 
         private void InitializeComponents()
         {
+            
             // Инициализация TreeView
             examTreeView = new ObservationTreeView();
             examTreeView.Dock = DockStyle.Fill;
@@ -289,7 +290,7 @@ namespace DEP
                 return;
             }
 
-            if (SelectTaskComboBox.SelectedItem == null)
+            if (SelectTaskComboBox.SelectedItem == null || selectedTask == null)
             {
                 MessageBox.Show("Пожалуйста, выберите задание из списка", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -297,10 +298,10 @@ namespace DEP
 
             try
             {
-                var selectedTask = (TaskAdd)SelectTaskComboBox.SelectedItem;
+                var selectedTaskData = (TaskAdd)SelectTaskComboBox.SelectedItem;
                 
                 // Открываем форму отправки задания
-                using (var submitForm = new SubmitTaskForm(userId, selectedTask.TaskId, selectedTask.Title))
+                using (var submitForm = new SubmitTaskForm(userId, selectedTaskData.TaskId, selectedTaskData.Title))
                 {
                     submitForm.ShowDialog();
                 }
@@ -396,14 +397,63 @@ namespace DEP
             try
             {
                 var tasks = dbManager.GetAllTasks();
+                
+                // Create a list with placeholder item
+                var taskList = new List<TaskAdd>();
+                taskList.Add(new TaskAdd { TaskId = -1, Title = "Выберите задание" });
+                taskList.AddRange(tasks);
+                
                 SelectTaskComboBox.DisplayMember = "Title";
                 SelectTaskComboBox.ValueMember = "TaskId";
-                SelectTaskComboBox.DataSource = tasks;
+                SelectTaskComboBox.DataSource = taskList;
+                
+                // Set initial selection to placeholder
+                SelectTaskComboBox.SelectedIndex = 0;
+                
+                // Add event handler for selection change
+                SelectTaskComboBox.SelectedIndexChanged += SelectTaskComboBox_SelectedIndexChanged;
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Ошибка при загрузке списка заданий: {ex.Message}", 
                     "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Handles SelectTaskComboBox selection change event
+        /// </summary>
+        /// <param name="sender">The event sender</param>
+        /// <param name="e">The event arguments</param>
+        private void SelectTaskComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (SelectTaskComboBox.SelectedItem != null)
+                {
+                    var selectedTaskData = (TaskAdd)SelectTaskComboBox.SelectedItem;
+                    
+                    // Check if placeholder is selected
+                    if (selectedTaskData.TaskId == -1)
+                    {
+                        selectedTask = null;
+                        return;
+                    }
+                    
+                    selectedTask = new TaskInfo
+                    {
+                        TaskId = selectedTaskData.TaskId,
+                        TaskTitle = selectedTaskData.Title
+                    };
+                }
+                else
+                {
+                    selectedTask = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка при обновлении выбранного задания: {ex.Message}");
             }
         }
 
@@ -415,6 +465,88 @@ namespace DEP
         private void LoadFolderExamTasksButton_Click(object sender, EventArgs e)
         {
             LoadContent(OtherMethods.TestsPath);
+        }
+
+        /// <summary>
+        /// Handles ViewStatusButton click event for viewing submission status
+        /// </summary>
+        /// <param name="sender">The event sender</param>
+        /// <param name="e">The event arguments</param>
+        private void ViewStatusButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (selectedTask != null)
+                {
+                    var statusForm = new SubmissionStatusForm(selectedTask.TaskId, userId, selectedTask.TaskTitle);
+                    statusForm.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Пожалуйста, выберите задание из списка", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при открытии формы статуса: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Handles BackToStartButton click event
+        /// Returns user to the StartingForm
+        /// Обрабатывает событие нажатия кнопки BackToStartButton
+        /// Возвращает пользователя на форму входа
+        /// </summary>
+        /// <param name="sender">The event sender</param>
+        /// <param name="e">The event arguments</param>
+        private void BackToStartButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Find existing StartingForm or create new one
+                var startingForm = Application.OpenForms.OfType<StartingForm>().FirstOrDefault();
+                if (startingForm == null)
+                {
+                    startingForm = new StartingForm();
+                    startingForm.Show();
+                }
+                else
+                {
+                    startingForm.Show();
+                    startingForm.BringToFront();
+                }
+                
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при возврате к форме входа: {ex.Message}", 
+                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void PrepareModForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                // Find existing StartingForm or create new one
+                var startingForm = Application.OpenForms.OfType<StartingForm>().FirstOrDefault();
+                if (startingForm == null)
+                {
+                    startingForm = new StartingForm();
+                    startingForm.Show();
+                }
+                else
+                {
+                    startingForm.Show();
+                    startingForm.BringToFront();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка при возврате к форме входа: {ex.Message}");
+            }
         }
     }
 }

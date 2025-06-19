@@ -63,6 +63,7 @@ namespace DEP.Database
             {
                 using (var connection = GetConnection())
                 {
+                    connection.Close();
                     connection.Open();
                     using (var command = new NpgsqlCommand(@"
                         SELECT filename, filedata, filetype
@@ -332,7 +333,7 @@ namespace DEP.Database
                             {
                                 submissions.Add(new TaskInfo
                                 {
-                                    TaskId = reader.GetInt32(0),
+                                    SubmissionId = reader.GetInt32(0),
                                     StudentId = reader.GetInt32(1),
                                     TaskTitle = reader.GetString(2),
                                     SubmitterName = reader.GetString(3),
@@ -573,7 +574,6 @@ namespace DEP.Database
                         FROM StudyMaterials m
                         JOIN Tasks t ON m.TaskId = t.TaskId
                         JOIN Users u ON m.UploadedBy = u.UserId
-                        WHERE m.IsActive = true
                         ORDER BY t.Title, m.UploadedAt DESC", connection))
                     {
                         using (var reader = command.ExecuteReader())
@@ -670,9 +670,9 @@ namespace DEP.Database
 
                     string query = @"
                         insert into studymaterials 
-                        (title, description, filename, filedata, filetype, uploadedby, taskid, isactive) 
+                        (title, description, filename, filedata, filetype, uploadedby, taskid) 
                         values 
-                        (@title, @description, @filename, @filedata, @filetype, @uploadedby, @taskid, true) 
+                        (@title, @description, @filename, @filedata, @filetype, @uploadedby, @taskid) 
                         returning materialid";
 
                     using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
@@ -744,8 +744,9 @@ namespace DEP.Database
         /// </summary>
         /// <param name="taskName">Name of the task</param>
         /// <param name="description">Task description</param>
+        /// <param name="userid">ID of the user creating the task</param>
         /// <returns>True if successful, false otherwise</returns>
-        public bool AddTask(string taskName, string description,int userid)
+        public bool AddTask(string taskName, string description, int userid)
         {
             try
             {
@@ -756,14 +757,15 @@ namespace DEP.Database
                     {
                         command.Connection = connection;
                         command.CommandText = @"
-                            INSERT INTO tasks (""title"", ""description"",""creatorid"")
-                            VALUES (@title, @description,@creatorid)";
+                            INSERT INTO tasks (title, description, creatorid)
+                            VALUES (@title, @description, @creatorid)";
 
                         command.Parameters.AddWithValue("@title", taskName);
                         command.Parameters.AddWithValue("@description", description);
                         command.Parameters.AddWithValue("@creatorid", userid);
-                        var result = command.ExecuteScalar();
-                        return result != null;
+                        
+                        int rowsAffected = command.ExecuteNonQuery();
+                        return rowsAffected > 0;
                     }
                 }
             }
@@ -786,7 +788,11 @@ namespace DEP.Database
                 using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "select taskid, title, description, creatorid, createdat, isactive from tasks where isactive = true";
+                    string query = @"
+                        SELECT t.taskid, t.title, t.description, t.creatorid, t.createdat, t.isactive 
+                        FROM tasks t
+                        JOIN users u ON t.creatorid = u.userid
+                        WHERE t.isactive = true";
 
                     using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
                     {
@@ -813,6 +819,108 @@ namespace DEP.Database
                 MessageBox.Show($"Ошибка при получении списка заданий: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return tasks;
+        }
+
+        /// <summary>
+        /// Deletes a user and all related data from the database by username
+        /// </summary>
+        /// <param name="username">Username of the user to delete</param>
+        /// <returns>True if the user was deleted successfully, false otherwise</returns>
+        public bool DeleteUser(string username)
+        {
+            try
+            {
+                using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+                {
+                    connection.Open();
+                    
+                    // First, check if user exists and get their ID
+                    int userId = -1;
+                    using (NpgsqlCommand checkCommand = new NpgsqlCommand())
+                    {
+                        checkCommand.Connection = connection;
+                        checkCommand.CommandText = "SELECT UserId FROM users WHERE username = @username";
+                        checkCommand.Parameters.AddWithValue("@username", username);
+                        
+                        var result = checkCommand.ExecuteScalar();
+                        if (result == null)
+                        {
+                            return false; // User not found
+                        }
+                        userId = Convert.ToInt32(result);
+                    }
+                    
+                    // Begin transaction for safe deletion
+                    using (var transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            // 1. Delete submissions where user is reviewer (ReviewerId)
+                            using (NpgsqlCommand deleteReviewerSubmissionsCommand = new NpgsqlCommand())
+                            {
+                                deleteReviewerSubmissionsCommand.Connection = connection;
+                                deleteReviewerSubmissionsCommand.Transaction = transaction;
+                                deleteReviewerSubmissionsCommand.CommandText = "DELETE FROM submissions WHERE reviewerid = @userId";
+                                deleteReviewerSubmissionsCommand.Parameters.AddWithValue("@userId", userId);
+                                deleteReviewerSubmissionsCommand.ExecuteNonQuery();
+                            }
+                            
+                            // 2. Delete submissions where user is student (StudentId)
+                            using (NpgsqlCommand deleteStudentSubmissionsCommand = new NpgsqlCommand())
+                            {
+                                deleteStudentSubmissionsCommand.Connection = connection;
+                                deleteStudentSubmissionsCommand.Transaction = transaction;
+                                deleteStudentSubmissionsCommand.CommandText = "DELETE FROM submissions WHERE studentid = @userId";
+                                deleteStudentSubmissionsCommand.Parameters.AddWithValue("@userId", userId);
+                                deleteStudentSubmissionsCommand.ExecuteNonQuery();
+                            }
+                            
+                            // 3. Delete study materials uploaded by user
+                            using (NpgsqlCommand deleteMaterialsCommand = new NpgsqlCommand())
+                            {
+                                deleteMaterialsCommand.Connection = connection;
+                                deleteMaterialsCommand.Transaction = transaction;
+                                deleteMaterialsCommand.CommandText = "DELETE FROM studymaterials WHERE uploadedby = @userId";
+                                deleteMaterialsCommand.Parameters.AddWithValue("@userId", userId);
+                                deleteMaterialsCommand.ExecuteNonQuery();
+                            }
+                            
+                            // 4. Delete tasks created by user
+                            using (NpgsqlCommand deleteTasksCommand = new NpgsqlCommand())
+                            {
+                                deleteTasksCommand.Connection = connection;
+                                deleteTasksCommand.Transaction = transaction;
+                                deleteTasksCommand.CommandText = "DELETE FROM tasks WHERE creatorid = @userId";
+                                deleteTasksCommand.Parameters.AddWithValue("@userId", userId);
+                                deleteTasksCommand.ExecuteNonQuery();
+                            }
+                            
+                            // 5. Finally, delete the user
+                            using (NpgsqlCommand deleteUserCommand = new NpgsqlCommand())
+                            {
+                                deleteUserCommand.Connection = connection;
+                                deleteUserCommand.Transaction = transaction;
+                                deleteUserCommand.CommandText = "DELETE FROM users WHERE userid = @userId";
+                                deleteUserCommand.Parameters.AddWithValue("@userId", userId);
+                                deleteUserCommand.ExecuteNonQuery();
+                            }
+                            
+                            transaction.Commit();
+                            return true;
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            throw;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при удалении пользователя: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
     }
 }

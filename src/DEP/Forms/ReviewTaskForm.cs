@@ -33,6 +33,7 @@ namespace DEP
         /// <param name="userId">ID of the user</param>
         public ReviewTaskForm(string userRole, int userId)
         {
+            this.MaximizeBox = false;
             this.userRole = userRole;
             this.userId = userId;
             
@@ -82,6 +83,20 @@ namespace DEP
 
             // Загружаем данные при открытии формы
             LoadSubmissions();
+
+            // Subscribe to events for automatic grid refresh
+            // Подписываемся на события для автоматического обновления таблицы
+            this.FormClosing += ReviewTaskForm_FormClosing;
+
+            // Управляем доступностью кнопки ChangeModeButton в зависимости от роли
+            ChangeModeButton.Enabled = userRole.ToLower() != "student";
+            if (!ChangeModeButton.Enabled)
+            {
+                ChangeModeButton.BackColor = Color.LightGray;
+                ChangeModeButton.ForeColor = Color.DarkGray;
+                ChangeModeButton.FlatStyle = FlatStyle.Standard;
+                ChangeModeButton.Cursor = Cursors.No;
+            }
         }
 
         /// <summary>
@@ -509,12 +524,27 @@ namespace DEP
 
         /// <summary>
         /// Handles the UpdateDBInfoButton click event
+        /// Opens AddInfo form and subscribes to events for automatic grid refresh
+        /// Обрабатывает событие нажатия кнопки UpdateDBInfoButton
+        /// Открывает форму AddInfo и подписывается на события для автоматического обновления таблицы
         /// </summary>
         private void UpdateDBInfoButton_Click(object sender, EventArgs e)
         {
             try
             {
                 AddInfo addinfo = new AddInfo(userId);
+                
+                // Subscribe to events to refresh the grid when data changes
+                // Подписываемся на события для обновления таблицы при изменении данных
+                addinfo.UserDeleted += (s, args) => RefreshGrid();
+                addinfo.UserAdded += (s, args) => RefreshGrid();
+                addinfo.TaskAdded += (s, args) => RefreshGrid();
+                addinfo.MaterialAdded += (s, args) => RefreshGrid();
+                
+                // Also refresh when the form is closed to ensure data is up to date
+                // Также обновляем при закрытии формы для обеспечения актуальности данных
+                addinfo.FormClosed += (s, args) => RefreshGrid();
+                
                 addinfo.Show();
             }
             catch (Exception ex)
@@ -524,7 +554,57 @@ namespace DEP
             }
         }
 
+        /// <summary>
+        /// Refreshes the DataGridView safely from any thread
+        /// Ensures that UI updates happen on the correct thread to prevent cross-thread exceptions
+        /// Обновляет DataGridView безопасно из любого потока
+        /// Обеспечивает обновление UI в правильном потоке для предотвращения исключений между потоками
+        /// </summary>
+        private void RefreshGrid()
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action(() => LoadSubmissions()));
+            }
+            else
+            {
+                LoadSubmissions();
+            }
+        }
 
+        /// <summary>
+        /// Handles BackToStartButton click event
+        /// Returns user to the StartingForm
+        /// Обрабатывает событие нажатия кнопки BackToStartButton
+        /// Возвращает пользователя на форму входа
+        /// </summary>
+        /// <param name="sender">The event sender</param>
+        /// <param name="e">The event arguments</param>
+        private void BackToStartButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Find existing StartingForm or create new one
+                var startingForm = Application.OpenForms.OfType<StartingForm>().FirstOrDefault();
+                if (startingForm == null)
+                {
+                    startingForm = new StartingForm();
+                    startingForm.Show();
+                }
+                else
+                {
+                    startingForm.Show();
+                    startingForm.BringToFront();
+                }
+                
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при возврате к форме входа: {ex.Message}", 
+                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         private void SortButton_Click(object sender, EventArgs e)
         {
@@ -553,6 +633,29 @@ namespace DEP
             {
                 // If both fields are filled - search for specific submission
                 SearchByBothIds();
+            }
+        }
+
+        private void ReviewTaskForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                // Find existing StartingForm or create new one
+                var startingForm = Application.OpenForms.OfType<StartingForm>().FirstOrDefault();
+                if (startingForm == null)
+                {
+                    startingForm = new StartingForm();
+                    startingForm.Show();
+                }
+                else
+                {
+                    startingForm.Show();
+                    startingForm.BringToFront();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка при возврате к форме входа: {ex.Message}");
             }
         }
     }

@@ -128,6 +128,7 @@
             this.Controls.Add(this.LogoPictureBox);
             this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.LoginButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "StartingForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
