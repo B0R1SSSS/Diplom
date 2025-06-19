@@ -1,86 +1,92 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\",
+  "WorkspaceRootPath": "C:\\Users\\boris\\Desktop\\Diplom\\src\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|c:\\users\\boris\\documents\\github\\diplom\\src\\dep\\forms\\submittaskform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|DEP||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Desktop\\Diplom\\src\\dep\\forms\\submittaskform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|solutionrelative:dep\\forms\\submittaskform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\dep\\forms\\submittaskform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Desktop\\Diplom\\src\\dep\\forms\\submittaskform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|solutionrelative:dep\\forms\\submittaskform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\dep\\forms\\submissionstatusform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Desktop\\Diplom\\src\\dep\\forms\\submissionstatusform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|solutionrelative:dep\\forms\\submissionstatusform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\dep\\forms\\submissionstatusform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Desktop\\Diplom\\src\\dep\\forms\\submissionstatusform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|solutionrelative:dep\\forms\\submissionstatusform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\dep\\forms\\startingform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Desktop\\Diplom\\src\\dep\\forms\\startingform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|solutionrelative:dep\\forms\\startingform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\dep\\forms\\startingform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Desktop\\Diplom\\src\\dep\\forms\\startingform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|solutionrelative:dep\\forms\\startingform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\dep\\forms\\reviewtaskform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Desktop\\Diplom\\src\\dep\\forms\\reviewtaskform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|solutionrelative:dep\\forms\\reviewtaskform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\dep\\forms\\reviewtaskform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Desktop\\Diplom\\src\\dep\\forms\\reviewtaskform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|solutionrelative:dep\\forms\\reviewtaskform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\dep\\forms\\preparemodform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Desktop\\Diplom\\src\\dep\\forms\\preparemodform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|solutionrelative:dep\\forms\\preparemodform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\dep\\forms\\preparemodform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Desktop\\Diplom\\src\\dep\\forms\\preparemodform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|solutionrelative:dep\\forms\\preparemodform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\dep\\forms\\offlineform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Desktop\\Diplom\\src\\dep\\forms\\offlineform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|solutionrelative:dep\\forms\\offlineform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\dep\\forms\\offlineform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Desktop\\Diplom\\src\\dep\\forms\\offlineform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|solutionrelative:dep\\forms\\offlineform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\dep\\forms\\downloadreviewtaskform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Desktop\\Diplom\\src\\dep\\forms\\downloadreviewtaskform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|solutionrelative:dep\\forms\\downloadreviewtaskform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\dep\\forms\\downloadreviewtaskform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Desktop\\Diplom\\src\\dep\\forms\\downloadreviewtaskform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|solutionrelative:dep\\forms\\downloadreviewtaskform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\dep\\forms\\addinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Desktop\\Diplom\\src\\dep\\forms\\addinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|solutionrelative:dep\\forms\\addinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\dep\\forms\\addinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Desktop\\Diplom\\src\\dep\\forms\\addinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|solutionrelative:dep\\forms\\addinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\dep\\forms\\addinfo.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Desktop\\Diplom\\src\\dep\\forms\\addinfo.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|solutionrelative:dep\\forms\\addinfo.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\dep\\classes\\methodsclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Desktop\\Diplom\\src\\dep\\classes\\methodsclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|solutionrelative:dep\\classes\\methodsclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\dep\\database\\databasemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Desktop\\Diplom\\src\\dep\\database\\databasemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|solutionrelative:dep\\database\\databasemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\dep\\forms\\offlineform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|C:\\Users\\boris\\Desktop\\Diplom\\src\\dep\\forms\\offlineform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|solutionrelative:dep\\forms\\offlineform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{870538BE-4961-4F98-9ED5-BD7949975788}|DEP\\DEP.csproj|c:\\users\\boris\\desktop\\diplom\\src\\dep\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|5e9a8ac2-4f34-4521-858f-4c248ba31532"
     }
   ],
   "DocumentGroupContainers": [
@@ -90,38 +96,50 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "AddInfo.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\DEP\\Forms\\AddInfo.cs",
+              "DocumentMoniker": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\AddInfo.cs",
               "RelativeDocumentMoniker": "DEP\\Forms\\AddInfo.cs",
               "ToolTip": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\AddInfo.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "..\\..\\..\\..\\Desktop\\Diplom\\src\\DEP\\Forms\\AddInfo.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "DEP\\Forms\\AddInfo.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-09T00:20:01.297Z",
               "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
+              "Title": "DEP",
+              "DocumentMoniker": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\DEP.csproj",
+              "RelativeDocumentMoniker": "DEP\\DEP.csproj",
+              "ToolTip": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\DEP.csproj",
+              "RelativeToolTip": "DEP\\DEP.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-06-19T03:11:02.658Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "StartingForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\DEP\\Forms\\StartingForm.cs",
+              "DocumentMoniker": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\StartingForm.cs",
               "RelativeDocumentMoniker": "DEP\\Forms\\StartingForm.cs",
               "ToolTip": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\StartingForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "..\\..\\..\\..\\Desktop\\Diplom\\src\\DEP\\Forms\\StartingForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "DEP\\Forms\\StartingForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-09T06:10:07.015Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "StartingForm.cs",
-              "DocumentMoniker": "C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\DEP\\Forms\\StartingForm.cs",
+              "DocumentMoniker": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\StartingForm.cs",
               "RelativeDocumentMoniker": "DEP\\Forms\\StartingForm.cs",
-              "ToolTip": "C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\DEP\\Forms\\StartingForm.cs",
+              "ToolTip": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\StartingForm.cs",
               "RelativeToolTip": "DEP\\Forms\\StartingForm.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAQwBUAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -129,22 +147,22 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "SubmissionStatusForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\DEP\\Forms\\SubmissionStatusForm.cs",
+              "DocumentMoniker": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\SubmissionStatusForm.cs",
               "RelativeDocumentMoniker": "DEP\\Forms\\SubmissionStatusForm.cs",
               "ToolTip": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\SubmissionStatusForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "..\\..\\..\\..\\Desktop\\Diplom\\src\\DEP\\Forms\\SubmissionStatusForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "DEP\\Forms\\SubmissionStatusForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-19T01:05:14.854Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "SubmissionStatusForm.cs",
-              "DocumentMoniker": "C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\DEP\\Forms\\SubmissionStatusForm.cs",
+              "DocumentMoniker": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\SubmissionStatusForm.cs",
               "RelativeDocumentMoniker": "DEP\\Forms\\SubmissionStatusForm.cs",
-              "ToolTip": "C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\DEP\\Forms\\SubmissionStatusForm.cs",
+              "ToolTip": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\SubmissionStatusForm.cs",
               "RelativeToolTip": "DEP\\Forms\\SubmissionStatusForm.cs",
               "ViewState": "AgIAAAQAAAAAAAAAAAAgwBoAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -152,36 +170,34 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "SubmitTaskForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\DEP\\Forms\\SubmitTaskForm.cs",
+              "DocumentMoniker": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\SubmitTaskForm.cs",
               "RelativeDocumentMoniker": "DEP\\Forms\\SubmitTaskForm.cs",
-              "ToolTip": "C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\DEP\\Forms\\SubmitTaskForm.cs [Design]",
+              "ToolTip": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\SubmitTaskForm.cs [Design]",
               "RelativeToolTip": "DEP\\Forms\\SubmitTaskForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-10T21:29:59.307Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-06-10T21:29:59.307Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "SubmitTaskForm.cs",
-              "DocumentMoniker": "C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\DEP\\Forms\\SubmitTaskForm.cs",
+              "DocumentMoniker": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\SubmitTaskForm.cs",
               "RelativeDocumentMoniker": "DEP\\Forms\\SubmitTaskForm.cs",
-              "ToolTip": "C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\DEP\\Forms\\SubmitTaskForm.cs",
+              "ToolTip": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\SubmitTaskForm.cs",
               "RelativeToolTip": "DEP\\Forms\\SubmitTaskForm.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-19T02:04:19.08Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-19T02:04:19.08Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "ReviewTaskForm.cs",
-              "DocumentMoniker": "C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\DEP\\Forms\\ReviewTaskForm.cs",
+              "DocumentMoniker": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\ReviewTaskForm.cs",
               "RelativeDocumentMoniker": "DEP\\Forms\\ReviewTaskForm.cs",
-              "ToolTip": "C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\DEP\\Forms\\ReviewTaskForm.cs",
+              "ToolTip": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\ReviewTaskForm.cs",
               "RelativeToolTip": "DEP\\Forms\\ReviewTaskForm.cs",
               "ViewState": "AgIAAA8AAAAAAAAAAAAAACMAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -189,22 +205,22 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "ReviewTaskForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\DEP\\Forms\\ReviewTaskForm.cs",
+              "DocumentMoniker": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\ReviewTaskForm.cs",
               "RelativeDocumentMoniker": "DEP\\Forms\\ReviewTaskForm.cs",
               "ToolTip": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\ReviewTaskForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "..\\..\\..\\..\\Desktop\\Diplom\\src\\DEP\\Forms\\ReviewTaskForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "DEP\\Forms\\ReviewTaskForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-10T21:20:38.697Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "PrepareModForm.cs",
-              "DocumentMoniker": "C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\DEP\\Forms\\PrepareModForm.cs",
+              "DocumentMoniker": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\PrepareModForm.cs",
               "RelativeDocumentMoniker": "DEP\\Forms\\PrepareModForm.cs",
-              "ToolTip": "C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\DEP\\Forms\\PrepareModForm.cs",
+              "ToolTip": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\PrepareModForm.cs",
               "RelativeToolTip": "DEP\\Forms\\PrepareModForm.cs",
               "ViewState": "AgIAACEAAAAAAAAAAAAQwC4AAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -212,22 +228,22 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "PrepareModForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\DEP\\Forms\\PrepareModForm.cs",
+              "DocumentMoniker": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\PrepareModForm.cs",
               "RelativeDocumentMoniker": "DEP\\Forms\\PrepareModForm.cs",
               "ToolTip": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\PrepareModForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "..\\..\\..\\..\\Desktop\\Diplom\\src\\DEP\\Forms\\PrepareModForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "DEP\\Forms\\PrepareModForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-10T21:26:54.306Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "OfflineForm.cs",
-              "DocumentMoniker": "C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\DEP\\Forms\\OfflineForm.cs",
+              "DocumentMoniker": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\OfflineForm.cs",
               "RelativeDocumentMoniker": "DEP\\Forms\\OfflineForm.cs",
-              "ToolTip": "C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\DEP\\Forms\\OfflineForm.cs",
+              "ToolTip": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\OfflineForm.cs",
               "RelativeToolTip": "DEP\\Forms\\OfflineForm.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -235,22 +251,22 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "OfflineForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\DEP\\Forms\\OfflineForm.cs",
+              "DocumentMoniker": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\OfflineForm.cs",
               "RelativeDocumentMoniker": "DEP\\Forms\\OfflineForm.cs",
               "ToolTip": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\OfflineForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "..\\..\\..\\..\\Desktop\\Diplom\\src\\DEP\\Forms\\OfflineForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "DEP\\Forms\\OfflineForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-09T06:12:08.689Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "DownloadReviewTaskForm.cs",
-              "DocumentMoniker": "C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\DEP\\Forms\\DownloadReviewTaskForm.cs",
+              "DocumentMoniker": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\DownloadReviewTaskForm.cs",
               "RelativeDocumentMoniker": "DEP\\Forms\\DownloadReviewTaskForm.cs",
-              "ToolTip": "C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\DEP\\Forms\\DownloadReviewTaskForm.cs",
+              "ToolTip": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\DownloadReviewTaskForm.cs",
               "RelativeToolTip": "DEP\\Forms\\DownloadReviewTaskForm.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAABkAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -258,11 +274,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "AddInfo.cs",
-              "DocumentMoniker": "C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\DEP\\Forms\\AddInfo.cs",
+              "DocumentMoniker": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\AddInfo.cs",
               "RelativeDocumentMoniker": "DEP\\Forms\\AddInfo.cs",
-              "ToolTip": "C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\DEP\\Forms\\AddInfo.cs",
+              "ToolTip": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\AddInfo.cs",
               "RelativeToolTip": "DEP\\Forms\\AddInfo.cs",
               "ViewState": "AgIAADUAAAAAAAAAAAAQwEIAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -270,22 +286,22 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "DownloadReviewTaskForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\DEP\\Forms\\DownloadReviewTaskForm.cs",
+              "DocumentMoniker": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\DownloadReviewTaskForm.cs",
               "RelativeDocumentMoniker": "DEP\\Forms\\DownloadReviewTaskForm.cs",
               "ToolTip": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\DownloadReviewTaskForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "..\\..\\..\\..\\Desktop\\Diplom\\src\\DEP\\Forms\\DownloadReviewTaskForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "DEP\\Forms\\DownloadReviewTaskForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-10T21:20:32.992Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "AddInfo.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\DEP\\Forms\\AddInfo.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\AddInfo.Designer.cs",
               "RelativeDocumentMoniker": "DEP\\Forms\\AddInfo.Designer.cs",
-              "ToolTip": "C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\DEP\\Forms\\AddInfo.Designer.cs",
+              "ToolTip": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\AddInfo.Designer.cs",
               "RelativeToolTip": "DEP\\Forms\\AddInfo.Designer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -293,11 +309,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "MethodsClass.cs",
-              "DocumentMoniker": "C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\DEP\\Classes\\MethodsClass.cs",
+              "DocumentMoniker": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Classes\\MethodsClass.cs",
               "RelativeDocumentMoniker": "DEP\\Classes\\MethodsClass.cs",
-              "ToolTip": "C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\DEP\\Classes\\MethodsClass.cs",
+              "ToolTip": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Classes\\MethodsClass.cs",
               "RelativeToolTip": "DEP\\Classes\\MethodsClass.cs",
               "ViewState": "AgIAAM8CAAAAAAAAAAAgwOkCAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -305,11 +321,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "DatabaseManager.cs",
-              "DocumentMoniker": "C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\DEP\\Database\\DatabaseManager.cs",
+              "DocumentMoniker": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Database\\DatabaseManager.cs",
               "RelativeDocumentMoniker": "DEP\\Database\\DatabaseManager.cs",
-              "ToolTip": "C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\DEP\\Database\\DatabaseManager.cs",
+              "ToolTip": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Database\\DatabaseManager.cs",
               "RelativeToolTip": "DEP\\Database\\DatabaseManager.cs",
               "ViewState": "AgIAACsAAAAAAAAAAAAgwCwAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -317,11 +333,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "OfflineForm.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\DEP\\Forms\\OfflineForm.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\OfflineForm.Designer.cs",
               "RelativeDocumentMoniker": "DEP\\Forms\\OfflineForm.Designer.cs",
-              "ToolTip": "C:\\Users\\boris\\Documents\\GitHub\\Diplom\\src\\DEP\\Forms\\OfflineForm.Designer.cs",
+              "ToolTip": "C:\\Users\\boris\\Desktop\\Diplom\\src\\DEP\\Forms\\OfflineForm.Designer.cs",
               "RelativeToolTip": "DEP\\Forms\\OfflineForm.Designer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
