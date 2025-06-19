@@ -1,0 +1,4 @@
+Для входа в систему используйте:
+
+Login: admin
+Password: admin

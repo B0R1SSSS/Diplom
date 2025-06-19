@@ -44,19 +44,23 @@ namespace DEP.Forms
                 // Set form title
                 this.Text = $"Статус задания: {_taskTitle}";
                 
+                Console.WriteLine($"Загружаем статус для студента ID: {_studentId}, задания ID: {_taskId}");
+                
                 // Get submission information from database
                 var submission = _dbManager.GetSubmissionByStudentAndTask(_studentId, _taskId);
                 
                 if (submission != null)
                 {
+                    Console.WriteLine($"Найдена отправка: ID={submission.SubmissionId}, Статус={submission.Status}, Feedback={submission.Feedback}");
+                    
                     // Display status
                     StatusLabel.Text = GetStatusDisplayText(submission.Status);
                     StatusLabel.ForeColor = GetStatusColor(submission.Status);
                     
                     // Display feedback if available
-                    if (!string.IsNullOrEmpty(submission.Comments))
+                    if (!string.IsNullOrEmpty(submission.Feedback))
                     {
-                        FeedbackTextBox.Text = submission.Comments;
+                        FeedbackTextBox.Text = submission.Feedback;
                         FeedbackTextBox.ReadOnly = true;
                     }
                     else
@@ -70,6 +74,8 @@ namespace DEP.Forms
                 }
                 else
                 {
+                    Console.WriteLine("Отправка не найдена");
+                    
                     // No submission found
                     StatusLabel.Text = "Задание не отправлено";
                     StatusLabel.ForeColor = System.Drawing.Color.Gray;
@@ -80,6 +86,7 @@ namespace DEP.Forms
             }
             catch (Exception ex)
             {
+                Console.WriteLine($"Ошибка при загрузке статуса задания: {ex.Message}");
                 MessageBox.Show($"Ошибка при загрузке статуса задания: {ex.Message}", 
                     "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

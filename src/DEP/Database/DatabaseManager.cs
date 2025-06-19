@@ -138,6 +138,7 @@ namespace DEP.Database
                                     Status = (SubmissionStatus)Enum.Parse(typeof(SubmissionStatus), reader.GetString(4)),
                                     FilePath = reader.IsDBNull(5) ? null : reader.GetString(5),
                                     Comments = reader.IsDBNull(6) ? null : reader.GetString(6),
+                                    Feedback = reader.IsDBNull(6) ? null : reader.GetString(6),
                                     TaskTitle = reader.GetString(7),
                                     SubmitterName = reader.GetString(8)
                                 });
@@ -279,6 +280,7 @@ namespace DEP.Database
                                     Status = (SubmissionStatus)Enum.Parse(typeof(SubmissionStatus), reader.GetString(4)),
                                     FilePath = reader.IsDBNull(5) ? null : reader.GetString(5),
                                     Comments = reader.IsDBNull(6) ? null : reader.GetString(6),
+                                    Feedback = reader.IsDBNull(6) ? null : reader.GetString(6),
                                     TaskTitle = reader.GetString(7),
                                     SubmitterName = reader.GetString(8)
                                 });
@@ -340,7 +342,8 @@ namespace DEP.Database
                                     FilePath = reader.GetString(4),
                                     SubmissionDate = reader.GetDateTime(5),
                                     Status = (SubmissionStatus)Enum.Parse(typeof(SubmissionStatus), reader.GetString(6)),
-                                    Comments = reader.IsDBNull(7) ? null : reader.GetString(7)
+                                    Comments = reader.IsDBNull(7) ? null : reader.GetString(7),
+                                    Feedback = reader.IsDBNull(7) ? null : reader.GetString(7)
                                 });
                             }
                         }
@@ -411,6 +414,8 @@ namespace DEP.Database
         {
             try
             {
+                Console.WriteLine($"Поиск отправки: StudentId={studentId}, TaskId={taskId}");
+                
                 using (var connection = new NpgsqlConnection(connectionString))
                 {
                     connection.Open();
@@ -433,7 +438,7 @@ namespace DEP.Database
                         {
                             if (reader.Read())
                             {
-                                return new TaskInfo
+                                var submission = new TaskInfo
                                 {
                                     SubmissionId = reader.GetInt32(0),
                                     TaskId = reader.GetInt32(1),
@@ -442,9 +447,17 @@ namespace DEP.Database
                                     Status = (SubmissionStatus)Enum.Parse(typeof(SubmissionStatus), reader.GetString(4)),
                                     FilePath = reader.IsDBNull(5) ? null : reader.GetString(5),
                                     Comments = reader.IsDBNull(6) ? null : reader.GetString(6),
+                                    Feedback = reader.IsDBNull(6) ? null : reader.GetString(6),
                                     TaskTitle = reader.GetString(7),
                                     SubmitterName = reader.GetString(8)
                                 };
+                                
+                                Console.WriteLine($"Найдена отправка: SubmissionId={submission.SubmissionId}, Status={submission.Status}, Feedback={submission.Feedback}");
+                                return submission;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Отправка не найдена в базе данных");
                             }
                         }
                     }
@@ -452,6 +465,7 @@ namespace DEP.Database
             }
             catch (Exception ex)
             {
+                Console.WriteLine($"Ошибка при получении работы: {ex.Message}");
                 MessageBox.Show($"Ошибка при получении работы: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return null;
@@ -498,6 +512,7 @@ namespace DEP.Database
                                     Status = (SubmissionStatus)Enum.Parse(typeof(SubmissionStatus), reader.GetString(4)),
                                     FilePath = reader.IsDBNull(5) ? null : reader.GetString(5),
                                     Comments = reader.IsDBNull(6) ? null : reader.GetString(6),
+                                    Feedback = reader.IsDBNull(6) ? null : reader.GetString(6),
                                     TaskTitle = reader.GetString(7),
                                     SubmitterName = reader.GetString(8)
                                 });
@@ -919,6 +934,36 @@ namespace DEP.Database
             catch (Exception ex)
             {
                 MessageBox.Show($"Ошибка при удалении пользователя: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Tests database connection and returns basic information
+        /// </summary>
+        /// <returns>True if connection successful, false otherwise</returns>
+        public bool TestConnection()
+        {
+            try
+            {
+                using (var connection = new NpgsqlConnection(connectionString))
+                {
+                    connection.Open();
+                    Console.WriteLine("Подключение к базе данных успешно");
+                    
+                    // Test query to check if tables exist
+                    using (var command = new NpgsqlCommand("SELECT COUNT(*) FROM submissions", connection))
+                    {
+                        var count = Convert.ToInt32(command.ExecuteScalar());
+                        Console.WriteLine($"Количество записей в таблице submissions: {count}");
+                    }
+                    
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка подключения к базе данных: {ex.Message}");
                 return false;
             }
         }

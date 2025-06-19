@@ -49,6 +49,11 @@ namespace DEP
             this.userId = userid;
             InitializeComponent();
             dbManager = DatabaseManager.Instance;
+            
+            // Test database connection
+            Console.WriteLine($"Инициализация PrepareModForm: UserId={userId}, UserRole={userRole}");
+            dbManager.TestConnection();
+            
             tempDirectory = Path.Combine(Path.GetTempPath(), "DEP_Temp");
             Directory.CreateDirectory(tempDirectory);
             isFileSystemView = false;
@@ -437,6 +442,7 @@ namespace DEP
                     if (selectedTaskData.TaskId == -1)
                     {
                         selectedTask = null;
+                        Console.WriteLine("Выбран placeholder - задание не выбрано");
                         return;
                     }
                     
@@ -445,10 +451,13 @@ namespace DEP
                         TaskId = selectedTaskData.TaskId,
                         TaskTitle = selectedTaskData.Title
                     };
+                    
+                    Console.WriteLine($"Выбрано задание: TaskId={selectedTask.TaskId}, TaskTitle={selectedTask.TaskTitle}");
                 }
                 else
                 {
                     selectedTask = null;
+                    Console.WriteLine("Элемент не выбран");
                 }
             }
             catch (Exception ex)
@@ -478,16 +487,19 @@ namespace DEP
             {
                 if (selectedTask != null)
                 {
-                    var statusForm = new SubmissionStatusForm(selectedTask.TaskId, userId, selectedTask.TaskTitle);
+                    Console.WriteLine($"Открываем форму статуса: UserId={userId}, TaskId={selectedTask.TaskId}, TaskTitle={selectedTask.TaskTitle}");
+                    var statusForm = new SubmissionStatusForm(userId, selectedTask.TaskId, selectedTask.TaskTitle);
                     statusForm.Show();
                 }
                 else
                 {
+                    Console.WriteLine("Задание не выбрано");
                     MessageBox.Show("Пожалуйста, выберите задание из списка", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)
             {
+                Console.WriteLine($"Ошибка при открытии формы статуса: {ex.Message}");
                 MessageBox.Show($"Ошибка при открытии формы статуса: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

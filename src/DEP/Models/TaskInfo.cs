@@ -61,6 +61,12 @@ namespace DEP.Models
         /// Получает или устанавливает комментарии
         /// </summary>
         public string Comments { get; set; }
+
+        /// <summary>
+        /// Gets or sets the feedback
+        /// Получает или устанавливает обратную связь
+        /// </summary>
+        public string Feedback { get; set; }
     }
 
     /// <summary>
